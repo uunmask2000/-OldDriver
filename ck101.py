@@ -209,5 +209,5 @@ def list_page(url):
 # 熱門
 # ___url = 'https://ck101.com/forum-3581-1.html?tab=hot&typeid=5171'
 # https://ck101.com/forum-3581-1.html?typeid=3437
-___url = 'https://ck101.com/forum-3581-3.html'
+___url = 'https://ck101.com/forum-3581-4.html'
 list_page(___url)
