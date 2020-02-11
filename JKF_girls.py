@@ -147,7 +147,7 @@ def singe_page(url, _text):
 def get_to_json(content, _prex):
 
     ###
-    path = './json/JKF'
+    path = './json/'
     cr_dir(path)
 
     ###
@@ -164,7 +164,7 @@ def get_to_json(content, _prex):
 
 def get_to_image(_prex,  img,  count):
      ###
-    path = './images/JKF'
+    path = './images/JKF_girls/'
     cr_dir(path)
     path = path + _prex + '/'
     cr_dir(path)
@@ -206,5 +206,5 @@ def list_page(url):
 
 
 # 抓取頁數
-___url = 'https://www.jkforum.net/forum-520-1.html'
+___url = 'https://www.jkforum.net/forum-1112-1.html'
 list_page(___url)

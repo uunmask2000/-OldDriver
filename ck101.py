@@ -164,7 +164,7 @@ def get_to_json(content, _prex):
 
 def get_to_image(_prex,  img,  count):
      ###
-    path = './images/'
+    path = './images/ck101'
     cr_dir(path)
     path = path + _prex + '/'
     cr_dir(path)
