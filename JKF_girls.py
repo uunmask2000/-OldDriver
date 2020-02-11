@@ -9,6 +9,8 @@ import time
 import base64
 import datetime
 import sys
+
+import string
 ###
 
 import CustomEncryption
@@ -138,8 +140,7 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['title_main'],  temple_[
-                                  'img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['title_main'],  temple_['img'],  temple_['img_rows'])
 
     # JSON path
     get_to_json(temple_,  temple_['title_main'])
@@ -168,12 +169,9 @@ def get_to_json(content, _prex):
 def get_to_image(_prex,  img,  count):
      ###
     path = './images/JKF_girls/'
-    cr_dir(path)
-  
-    try:
-        path = path + _prex + '/'
-    except :
-        path = path + _prex[5] + '/'
+    cr_dir(path) 
+    ## 過濾
+    path = path + removePunctuation(_prex) + '/'
     cr_dir(path)
     #################################
     true_local_path = []
@@ -211,6 +209,23 @@ def list_page(url):
             singe_page(_url, title)
     return True
 
+
+def removePunctuation(text):
+    '''去掉字符串中标点符号
+    '''
+    #方法一：使用列表添加每个字符，最后将列表拼接成字符串，目测要五行代码以上
+    temp = []
+    for c in text:
+        if c not in string.punctuation:
+            temp.append(c)
+    newText = ''.join(temp)
+    print(newText)
+
+    #方法二：给join传递入参时计算符合条件的字符
+    b = ''.join(c for c in text if c not in string.punctuation)
+    print(b)
+    return newText
+ 
 
 # 抓取頁數
 # list_page(___url)
