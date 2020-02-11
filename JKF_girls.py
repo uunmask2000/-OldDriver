@@ -155,7 +155,7 @@ def get_to_json(content, _prex):
     cr_dir(path)
 
     ###
-    filename = path + str(_prex) + '.json'
+    filename = path + removePunctuation(str(_prex)) + '.json'
     # print(filename)
     # print(_prex)
     # print(content)
@@ -222,7 +222,7 @@ def removePunctuation(text):
     # print(newText)
 
     #方法二：给join传递入参时计算符合条件的字符
-    b = ''.join(c for c in text if c not in string.punctuation)
+    # b = ''.join(c for c in text if c not in string.punctuation)
     # print(b)
     return newText.replace(" ", "")
  
