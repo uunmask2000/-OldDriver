@@ -219,12 +219,12 @@ def removePunctuation(text):
         if c not in string.punctuation:
             temp.append(c)
     newText = ''.join(temp)
-    print(newText)
+    # print(newText)
 
     #方法二：给join传递入参时计算符合条件的字符
     b = ''.join(c for c in text if c not in string.punctuation)
-    print(b)
-    return newText
+    # print(b)
+    return newText.replace(" ", "")
  
 
 # 抓取頁數
