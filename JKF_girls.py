@@ -110,6 +110,8 @@ def singe_page(url, _text):
     ##
     temple_['host'] = url
     temple_['h1'] = _text
+    temple_['title_main'] = soup.find(
+        "meta",  property="og:title")['content']
     temple_['title'] = ','.join(str(i) for i in re.findall(
         u"[\u4e00-\u9fa5]+", soup.title.text))
     ####
@@ -136,10 +138,11 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['title'],  temple_['img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['title_main'],  temple_[
+                                  'img'],  temple_['img_rows'])
 
     # JSON path
-    get_to_json(temple_,  temple_['title'])
+    get_to_json(temple_,  temple_['title_main'])
 
     return True
 
@@ -166,7 +169,11 @@ def get_to_image(_prex,  img,  count):
      ###
     path = './images/JKF_girls/'
     cr_dir(path)
-    path = path + _prex + '/'
+  
+    try:
+        path = path + _prex + '/'
+    except :
+        path = path + _prex[5] + '/'
     cr_dir(path)
     #################################
     true_local_path = []
@@ -205,7 +212,7 @@ def list_page(url):
     return True
 
 
-# 抓取頁數 
+# 抓取頁數
 # list_page(___url)
 ___url = "https://www.jkforum.net/forum-1112-{}.html"
 for i in range(1, 15):
