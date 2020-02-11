@@ -136,10 +136,10 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['serchcode'],  temple_['img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['title'],  temple_['img'],  temple_['img_rows'])
 
     # JSON path
-    get_to_json(temple_,  temple_['serchcode'])
+    get_to_json(temple_,  temple_['title'])
 
     return True
 
@@ -197,7 +197,7 @@ def list_page(url):
     for _a in aa:
         url = _a.get('href')
         title = _a.get('title').replace(
-            '/', '_').replace(':', '_').replace('，', '_')
+            '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
         if url.find("typeid") == -1:
             print(url, ' : ', title)
             _url = 'https://www.jkforum.net/' + url
@@ -205,6 +205,10 @@ def list_page(url):
     return True
 
 
-# 抓取頁數
-___url = 'https://www.jkforum.net/forum-1112-1.html'
-list_page(___url)
+# 抓取頁數 
+# list_page(___url)
+___url = "https://www.jkforum.net/forum-1112-{}.html"
+for i in range(1, 15):
+    url = ___url.format(i)
+    print(url)
+    list_page(___url.format(i))

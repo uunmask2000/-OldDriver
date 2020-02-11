@@ -78,7 +78,7 @@ def get_soup(url):
     return soup
 
 
-def singe_page(url , _text):
+def singe_page(url, _text):
 
     ###
     # title
@@ -108,7 +108,7 @@ def singe_page(url , _text):
     temple_['img_rows'] = len(file_s)
     ##
     temple_['host'] = url
-    temple_['h1'] = _text 
+    temple_['h1'] = _text
     temple_['title'] = ','.join(str(i) for i in re.findall(
         u"[\u4e00-\u9fa5]+", soup.title.text))
     ####
@@ -192,11 +192,11 @@ def get_to_image(_prex,  img,  count):
 
 def list_page(url):
     soup = get_soup(url)
-    aa = soup.find_all('a', {'class': "s xst"}) 
-    for _a in aa: 
+    aa = soup.find_all('a', {'class': "s xst"})
+    for _a in aa:
         url = _a.get('href')
         title = _a.get('title').replace(
-            '/', '_').replace(':', '_').replace('，', '_')
+            '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
         if url.find("typeid") == -1:
             print(url, ' : ', title)
             _url = 'https://ck101.com/' + url
@@ -209,5 +209,7 @@ def list_page(url):
 # 熱門
 # ___url = 'https://ck101.com/forum-3581-1.html?tab=hot&typeid=5171'
 # https://ck101.com/forum-3581-1.html?typeid=3437
-___url = 'https://ck101.com/forum-3581-1.html'
-list_page(___url)
+# ___url = 'https://ck101.com/forum-3581-1.html'
+___url = "https://ck101.com/forum-1112-{}.html"
+for i in range(1, 15): 
+    list_page(___url.format(i)) 
