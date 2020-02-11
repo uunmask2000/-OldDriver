@@ -196,7 +196,7 @@ def list_page(url):
     for _a in aa: 
         url = _a.get('href')
         title = _a.get('title').replace(
-            '/', '_').replace(':', '_').replace('，', '_')
+            '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
         if url.find("typeid") == -1:
             print(url, ' : ', title)
             _url = 'https://ck101.com/' + url
