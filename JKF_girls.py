@@ -173,7 +173,9 @@ def get_to_image(_prex,  img,  count):
         path = path + str(_prex) + '/'
         cr_dir(path) 
         true_local_path = [] 
-
+        if len(os.listdir(path)) != 0:
+            return []
+        
         row = 0
         for url_img in img:
             ##
