@@ -153,7 +153,7 @@ def get_to_json(content, _prex):
 
     ###
     path = './json/'
-    cr_dir(path) 
+    cr_dir(path)
     ###
     filename = path + removePunctuation(str(_prex)) + '.json'
     # print(filename)
@@ -170,7 +170,7 @@ def get_to_image(_prex,  img,  count):
     try:
         path = './images/JKF_girls/'
         cr_dir(path)
-        # 過濾 
+        # 過濾
         path = path + removePunctuation(_prex) + '/'
         cr_dir(path)
         #################################
@@ -195,7 +195,7 @@ def get_to_image(_prex,  img,  count):
     except:
         true_local_path = ""
      ###
-   
+
     return true_local_path
 
 
@@ -207,7 +207,7 @@ def list_page(url):
         url = _a.get('href')
         # title = _a.get('title').replace(
         #     '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
-        title =  removePunctuation(_a.get('title'))
+        title = removePunctuation(_a.get('title'))
         if url.find("typeid") == -1:
             print(url, ' : ', title)
             _url = 'https://www.jkforum.net/' + url
@@ -215,42 +215,21 @@ def list_page(url):
     return True
 
 
-def removePunctuation(text):
-    '''去掉字符串中标点符号
-    '''
-    # 方法一：使用列表添加每个字符，最后将列表拼接成字符串，目测要五行代码以上
-    temp = []
-    for c in text:
-        if c not in string.punctuation:
-            temp.append(c)
-    newText = ''.join(temp)
-    # print(newText)
-
-    _re_s = ["\\",
-             "-",
-             "－",
-             "/",
-             ":",
-             "?",
-             "*",
-             "|",
-             "\x08",
-             "x08"
-             ]
-
-    for string_ in _re_s:
-        newText.replace(string_, '')
-
-    # 方法二：给join传递入参时计算符合条件的字符
-    # b = ''.join(c for c in text if c not in string.punctuation)
-    # print(b)
-    return newText.replace(" ", "")
+def removePunctuation(line):  
+    punctuation = """！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
+    re_punctuation = "[{}]+".format(punctuation)
+    line = re.sub(re_punctuation, "", line)
+    return line.strip()
 
 
 # 抓取頁數
 # list_page(___url)
-___url = "https://www.jkforum.net/forum-1112-{}.html"
+# ___url = "https://www.jkforum.net/forum-1112-{}.html"
 for i in range(5, 15):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
+
+# strrr = '這款究極BODY！甜美臉蛋配上極致誘惑身材老天啊為何我那天沒在現場？'
+# v = removePunctuation(strrr)
+# print(v)
