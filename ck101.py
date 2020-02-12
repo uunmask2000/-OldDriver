@@ -204,12 +204,7 @@ def list_page(url):
     return True
 
 
-# 抓取頁數
-# ___url = 'https://ck101.com/forum.php?mod=forumdisplay&fid=3581&page=1'
-# 熱門
-# ___url = 'https://ck101.com/forum-3581-1.html?tab=hot&typeid=5171'
-# https://ck101.com/forum-3581-1.html?typeid=3437
-# ___url = 'https://ck101.com/forum-3581-1.html'
-___url = "https://ck101.com/forum-1112-{}.html"
+# 抓取頁數 
+___url = "https://ck101.com/forum.php?mod=forumdisplay&fid=3581&page={}"
 for i in range(1, 15): 
     list_page(___url.format(i)) 
