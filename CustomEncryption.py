@@ -1,5 +1,6 @@
 import base64
-
+import re 
+import string
 
 class CustomEncryption:
     '''
@@ -21,3 +22,15 @@ class CustomEncryption:
         # data = base64.b16decode(encoded).decode('utf-8')
         data = base64.b16decode(encoded.encode('ascii')).decode('utf-8')
         return data
+
+    '''
+    處理字串
+    '''
+    def removePunctuation(self, line):
+        punctuation = "-""！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
+        re_punctuation = "[{}]+".format(punctuation)
+        line = re.sub(re_punctuation, "", line)
+        # return line.strip().strip(b'\x00'.decode())
+        out = "".join(line.split())
+        out = out.replace('/', "").replace('.', "").replace('\\', "")
+        return out

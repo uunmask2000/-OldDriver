@@ -112,7 +112,7 @@ def singe_page(url, _text):
     ##
     temple_['host'] = url
     temple_['h1'] = _text
-    temple_['title_main'] = removePunctuation(soup.find("meta",  property="og:title")['content'])
+    temple_['title_main'] = CustomEncryption.removePunctuation(soup.find("meta",  property="og:title")['content'])
     temple_['title'] = ','.join(str(i) for i in re.findall(
         u"[\u4e00-\u9fa5]+", soup.title.text))
     ####
@@ -204,22 +204,13 @@ def list_page(url):
         url = _a.get('href')
         # title = _a.get('title').replace(
         #     '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
-        title = removePunctuation(_a.get('title'))
+        title = CustomEncryption.removePunctuation(_a.get('title'))
         if url.find("typeid") == -1:
             print(url, ' : ', title)
             _url = 'https://www.jkforum.net/' + url
             singe_page(_url, title)
     return True
-
-
-def removePunctuation(line):  
-    punctuation = "-""！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
-    re_punctuation = "[{}]+".format(punctuation)
-    line = re.sub(re_punctuation, "", line)
-    # return line.strip().strip(b'\x00'.decode())
-    out = "".join(line.split())
-    return out
-
+ 
 
 # 抓取頁數
 # list_page(___url)
@@ -228,7 +219,4 @@ for i in range(1, 15):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
-
-# strrr = '兼具火辣與冰涼的嗆冷魅力我真故我在\x08 雪碧 - JKF女郎'
-# v = removePunctuation(strrr)
-# print(v)
+ 
