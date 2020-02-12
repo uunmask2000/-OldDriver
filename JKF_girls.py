@@ -153,10 +153,7 @@ def get_to_json(content, _prex):
 
     ###
     path = './json/'
-    cr_dir(path)
-
-    _prex = _prex.replace('/', '_').replace(':',
-                                            '_').replace('，', '_').replace('?', '_')
+    cr_dir(path) 
     ###
     filename = path + removePunctuation(str(_prex)) + '.json'
     # print(filename)
@@ -173,9 +170,7 @@ def get_to_image(_prex,  img,  count):
      ###
     path = './images/JKF_girls/'
     cr_dir(path)
-    # 過濾
-    _prex = _prex.replace('/', '_').replace(':',
-                                            '_').replace('，', '_').replace('?', '_')
+    # 過濾 
     path = path + removePunctuation(_prex) + '/'
     cr_dir(path)
     #################################
@@ -206,8 +201,9 @@ def list_page(url):
     aa = soup.find_all('a', {'class': "z"})
     for _a in aa:
         url = _a.get('href')
-        title = _a.get('title').replace(
-            '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
+        # title = _a.get('title').replace(
+        #     '/', '_').replace(':', '_').replace('，', '_').replace('?', '_')
+        title =  removePunctuation(_a.get('title'))
         if url.find("typeid") == -1:
             print(url, ' : ', title)
             _url = 'https://www.jkforum.net/' + url
@@ -231,7 +227,8 @@ def removePunctuation(text):
              ":",
              "?",
              "*",
-             " |"
+             "|",
+             "\x08"
              ]
 
     for string_ in _re_s:
