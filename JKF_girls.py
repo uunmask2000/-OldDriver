@@ -167,31 +167,35 @@ def get_to_json(content, _prex):
 
 
 def get_to_image(_prex,  img,  count):
-     ###
-    path = './images/JKF_girls/'
-    cr_dir(path)
-    # 過濾 
-    path = path + removePunctuation(_prex) + '/'
-    cr_dir(path)
-    #################################
-    true_local_path = []
-    #################################
+    try:
+        path = './images/JKF_girls/'
+        cr_dir(path)
+        # 過濾 
+        path = path + removePunctuation(_prex) + '/'
+        cr_dir(path)
+        #################################
+        true_local_path = []
+        #################################
 
-    row = 0
-    for url_img in img:
-        ##
-        row += 1
-        html = requests.get(url_img)
-        img_name = path + str(row) + '.png'
-        ####
-        true_local_path.append(img_name)
-        # pass
-        with open(img_name, 'wb') as file:  # 以byte的形式將圖片數據寫入
-            file.write(html.content)
-            file.flush()
-        file.close()  # close file
-        print('第 %d 張' % (row))
-        time.sleep(1)
+        row = 0
+        for url_img in img:
+            ##
+            row += 1
+            html = requests.get(url_img)
+            img_name = path + str(row) + '.png'
+            ####
+            true_local_path.append(img_name)
+            # pass
+            with open(img_name, 'wb') as file:  # 以byte的形式將圖片數據寫入
+                file.write(html.content)
+                file.flush()
+            file.close()  # close file
+            print('第 %d 張' % (row))
+            time.sleep(1)
+    except:
+        true_local_path = ""
+     ###
+   
     return true_local_path
 
 
@@ -206,9 +210,8 @@ def list_page(url):
         title =  removePunctuation(_a.get('title'))
         if url.find("typeid") == -1:
             print(url, ' : ', title)
-            if(url != 'thread-9220481-1-5')
-                _url = 'https://www.jkforum.net/' + url
-                singe_page(_url, title)
+            _url = 'https://www.jkforum.net/' + url
+            singe_page(_url, title)
     return True
 
 
@@ -224,16 +227,19 @@ def removePunctuation(text):
     # print(newText)
 
     _re_s = ["\\",
+             "-",
+             "－",
              "/",
              ":",
              "?",
              "*",
              "|",
-             "\x08"
+             "\x08",
+             "x08"
              ]
 
     for string_ in _re_s:
-        newText. replace(string_, '')
+        newText.replace(string_, '')
 
     # 方法二：给join传递入参时计算符合条件的字符
     # b = ''.join(c for c in text if c not in string.punctuation)
