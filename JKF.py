@@ -147,7 +147,7 @@ def singe_page(url, _text):
 def get_to_json(content, _prex):
 
     ###
-    path = './json/JKF'
+    path = './json/JKF/'
     cr_dir(path)
 
     ###
@@ -164,7 +164,7 @@ def get_to_json(content, _prex):
 
 def get_to_image(_prex,  img,  count):
      ###
-    path = './images/JKF'
+    path = './images/JKF/'
     cr_dir(path)
     path = path + _prex + '/'
     cr_dir(path)
