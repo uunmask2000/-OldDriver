@@ -216,20 +216,22 @@ def list_page(url):
 
 
 def removePunctuation(line):  
-    punctuation = """！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
+    punctuation = "-""！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
     re_punctuation = "[{}]+".format(punctuation)
     line = re.sub(re_punctuation, "", line)
-    return line.strip()
+    # return line.strip().strip(b'\x00'.decode())
+    out = "".join(line.split())
+    return out
 
 
 # 抓取頁數
 # list_page(___url)
-# ___url = "https://www.jkforum.net/forum-1112-{}.html"
+___url = "https://www.jkforum.net/forum-1112-{}.html"
 for i in range(5, 15):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
 
-# strrr = '這款究極BODY！甜美臉蛋配上極致誘惑身材老天啊為何我那天沒在現場？'
+# strrr = '兼具火辣與冰涼的嗆冷魅力我真故我在\x08 雪碧 - JKF女郎'
 # v = removePunctuation(strrr)
 # print(v)
