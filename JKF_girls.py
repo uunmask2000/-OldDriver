@@ -206,8 +206,9 @@ def list_page(url):
         title =  removePunctuation(_a.get('title'))
         if url.find("typeid") == -1:
             print(url, ' : ', title)
-            _url = 'https://www.jkforum.net/' + url
-            singe_page(_url, title)
+            if(url != 'thread-9220481-1-5')
+                _url = 'https://www.jkforum.net/' + url
+                singe_page(_url, title)
     return True
 
 
