@@ -140,7 +140,8 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['title_main'],  temple_['img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['title_main'],  temple_[
+                                  'img'],  temple_['img_rows'])
 
     # JSON path
     get_to_json(temple_,  temple_['title_main'])
@@ -154,6 +155,8 @@ def get_to_json(content, _prex):
     path = './json/'
     cr_dir(path)
 
+    _prex = _prex.replace('/', '_').replace(':',
+                                            '_').replace('，', '_').replace('?', '_')
     ###
     filename = path + removePunctuation(str(_prex)) + '.json'
     # print(filename)
@@ -169,8 +172,10 @@ def get_to_json(content, _prex):
 def get_to_image(_prex,  img,  count):
      ###
     path = './images/JKF_girls/'
-    cr_dir(path) 
-    ## 過濾
+    cr_dir(path)
+    # 過濾
+    _prex = _prex.replace('/', '_').replace(':',
+                                            '_').replace('，', '_').replace('?', '_')
     path = path + removePunctuation(_prex) + '/'
     cr_dir(path)
     #################################
@@ -213,7 +218,7 @@ def list_page(url):
 def removePunctuation(text):
     '''去掉字符串中标点符号
     '''
-    #方法一：使用列表添加每个字符，最后将列表拼接成字符串，目测要五行代码以上
+    # 方法一：使用列表添加每个字符，最后将列表拼接成字符串，目测要五行代码以上
     temp = []
     for c in text:
         if c not in string.punctuation:
@@ -221,16 +226,27 @@ def removePunctuation(text):
     newText = ''.join(temp)
     # print(newText)
 
-    #方法二：给join传递入参时计算符合条件的字符
+    _re_s = ["\\",
+             "/",
+             ":",
+             "?",
+             "*",
+             " |"
+             ]
+
+    for string_ in _re_s:
+        newText. replace(string_, '')
+
+    # 方法二：给join传递入参时计算符合条件的字符
     # b = ''.join(c for c in text if c not in string.punctuation)
     # print(b)
     return newText.replace(" ", "")
- 
+
 
 # 抓取頁數
 # list_page(___url)
 ___url = "https://www.jkforum.net/forum-1112-{}.html"
-for i in range(1, 15):
+for i in range(5, 15):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
