@@ -127,7 +127,7 @@ def singe_page(url, _text):
     # print(temple_)
     # return True
     # temple_['serchcode'] = CustomEncryption.b16_encode(url)
-    temple_['serchcode'] = _text
+    temple_['serchcode'] = CustomEncryption.removePunctuation(_text)
 
     temple_['keywords'] = soup.find(attrs={"name": "keywords"})['content']
     temple_['description'] = soup.find(
