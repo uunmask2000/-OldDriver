@@ -112,8 +112,7 @@ def singe_page(url, _text):
     ##
     temple_['host'] = url
     temple_['h1'] = _text
-    temple_['title_main'] = soup.find(
-        "meta",  property="og:title")['content']
+    temple_['title_main'] = removePunctuation(soup.find("meta",  property="og:title")['content'])
     temple_['title'] = ','.join(str(i) for i in re.findall(
         u"[\u4e00-\u9fa5]+", soup.title.text))
     ####
@@ -140,8 +139,7 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['title_main'],  temple_[
-                                  'img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['title_main'],  temple_['img'],  temple_['img_rows'])
 
     # JSON path
     get_to_json(temple_,  temple_['title_main'])
@@ -155,7 +153,7 @@ def get_to_json(content, _prex):
     path = './json/'
     cr_dir(path)
     ###
-    filename = path + removePunctuation(str(_prex)) + '.json'
+    filename = path + str(_prex) + '.json'
     # print(filename)
     # print(_prex)
     # print(content)
@@ -167,15 +165,14 @@ def get_to_json(content, _prex):
 
 
 def get_to_image(_prex,  img,  count):
+    
     try:
         path = './images/JKF_girls/'
         cr_dir(path)
         # 過濾
-        path = path + removePunctuation(_prex) + '/'
-        cr_dir(path)
-        #################################
-        true_local_path = []
-        #################################
+        path = path + str(_prex) + '/'
+        cr_dir(path) 
+        true_local_path = [] 
 
         row = 0
         for url_img in img:
