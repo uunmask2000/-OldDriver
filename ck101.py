@@ -171,9 +171,8 @@ def get_to_image(_prex,  img,  count):
     #################################
     true_local_path = []
     #################################
-    print( count(img))
-    img_rrr = count(img) 
-    if len(os.listdir(path)) != int(img_rrr) :
+  
+    if len(os.listdir(path)) != int(len(img)):
         return []
         
     row = 0
