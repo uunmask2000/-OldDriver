@@ -172,8 +172,23 @@ def get_to_image(_prex,  img,  count):
     #################################
     true_local_path = []
     #################################
-    if len(os.listdir(path)) != 0:
+
+    if int(len(img)) == 0:
+        try:
+            shutil.rmtree(path)
+        except OSError as e:
+            print(e)
+        else:
+            print("The directory is deleted successfully")
+        return []
+
+    if len(os.listdir(path)) == 0:
+        if len(os.listdir(path)) == int(len(img)):
             return []
+        else:
+            os.remove(path)
+    else:
+        print('下載圖片')
 
     row = 0
     for url_img in img:

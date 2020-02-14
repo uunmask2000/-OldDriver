@@ -188,8 +188,8 @@ def get_to_image(_prex,  img,  count):
                 return []
             else:
                 os.remove(path)
-    else:
-        print('下載圖片')
+        else:
+            print('下載圖片')
         
         row = 0
         for url_img in img:
