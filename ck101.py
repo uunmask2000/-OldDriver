@@ -171,9 +171,10 @@ def get_to_image(_prex,  img,  count):
     #################################
     true_local_path = []
     #################################
-    if len(os.listdir(path)) != count(img):
+    print( count(img))
+    img_rrr = count(img) 
+    if len(os.listdir(path)) != int(img_rrr) :
         return []
-
         
     row = 0
     for url_img in img:
