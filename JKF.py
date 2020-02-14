@@ -9,6 +9,7 @@ import time
 import base64
 import datetime
 import sys
+import shutil
 ###
 
 import CustomEncryption
