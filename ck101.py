@@ -173,25 +173,25 @@ def get_to_image(_prex,  img,  count):
     true_local_path = []
     #################################
 
-    if int(len(img)) ==0:
+    if int(len(img)) == 0:
         try:
             shutil.rmtree(path)
         except OSError as e:
-            print(e) 
+            print(e)
         return []
-  
-    if len(os.listdir(path)) == 0 :   
+
+    if len(os.listdir(path)) == 0:
         if len(os.listdir(path)) == int(len(img)):
             return []
         else:
             try:
                 shutil.rmtree(path)
             except OSError as e:
-                print(e) 
+                print(e)
             return []
     else:
         print('下載圖片')
-        
+
     row = 0
     for url_img in img:
         ##
@@ -207,7 +207,7 @@ def get_to_image(_prex,  img,  count):
         file.close()  # close file
         print('第 %d 張' % (row))
         time.sleep(1)
-        
+
     return true_local_path
 
 
@@ -225,7 +225,7 @@ def list_page(url):
     return True
 
 
-# 抓取頁數 
+# 抓取頁數
 ___url = "https://ck101.com/forum.php?mod=forumdisplay&fid=3581&page={}"
-for i in range(1, 15): 
-    list_page(___url.format(i)) 
+for i in range(1, 15):
+    list_page(___url.format(i))
