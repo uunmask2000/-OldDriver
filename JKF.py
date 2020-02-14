@@ -177,9 +177,7 @@ def get_to_image(_prex,  img,  count):
         try:
             shutil.rmtree(path)
         except OSError as e:
-            print(e)
-        else:
-            print("The directory is deleted successfully")
+            print(e) 
         return []
 
     if len(os.listdir(path)) == 0:
@@ -189,9 +187,8 @@ def get_to_image(_prex,  img,  count):
             try:
                 shutil.rmtree(path)
             except OSError as e:
-                print(e)
-            else:
-                print("The directory is deleted successfully")
+                print(e) 
+            return []
     else:
         print('下載圖片')
 
