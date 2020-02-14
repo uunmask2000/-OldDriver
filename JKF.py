@@ -208,5 +208,9 @@ def list_page(url):
 
 
 # 抓取頁數
-___url = 'https://www.jkforum.net/forum-520-1.html'
-list_page(___url)
+___url = 'https://www.jkforum.net/forum-520-{}.html'
+#list_page(___url)
+for i in range(1, 15):
+    url = ___url.format(i)
+    print(url)
+    list_page(___url.format(i))
