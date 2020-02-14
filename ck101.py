@@ -9,6 +9,7 @@ import time
 import base64
 import datetime
 import sys
+import shutil
 ###
 
 import CustomEncryption
@@ -171,9 +172,23 @@ def get_to_image(_prex,  img,  count):
     #################################
     true_local_path = []
     #################################
-  
-    if len(os.listdir(path)) != int(len(img)):
+
+    if int(len(img)) ==0:
+        try:
+            shutil.rmtree(path)
+        except OSError as e:
+            print(e)
+        else:
+            print("The directory is deleted successfully")
         return []
+  
+    if len(os.listdir(path)) == 0 :   
+        if len(os.listdir(path)) == int(len(img)):
+            return []
+        else:
+            os.remove(path)
+    else:
+        print('下載圖片')
         
     row = 0
     for url_img in img:
@@ -190,6 +205,7 @@ def get_to_image(_prex,  img,  count):
         file.close()  # close file
         print('第 %d 張' % (row))
         time.sleep(1)
+        
     return true_local_path
 
 

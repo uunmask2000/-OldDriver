@@ -27,17 +27,10 @@ class CustomEncryption:
     處理字串
     '''
     def removePunctuation(self, line):
-        punctuation = "-""！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
+        punctuation = "<>-""|！？｡＂＃＄％＆＇（）＊＋－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘'‛“”„‟…‧﹏"""
         re_punctuation = "[{}]+".format(punctuation)
         line = re.sub(re_punctuation, "", line)
-        # return line.strip().strip(b'\x00'.decode()) |
+        # return line.strip().strip(b'\x00'.decode())
         out = "".join(line.split())
-        out = out.replace('/', "")
-        .replace('.', "")
-        .replace('\\',"")
-        .replace('|', "")
-        .replace('？', "")
-        .replace('<', "")
-        .replace('>', "")
-        .replace(' ', "")
+        out = out.replace('/', "").replace('.',"").replace('\\', "").replace('?', "").replace('>', "").replace('<', "").replace(' ', "")
         return out
