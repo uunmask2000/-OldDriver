@@ -32,5 +32,6 @@ class CustomEncryption:
         line = re.sub(re_punctuation, "", line)
         # return line.strip().strip(b'\x00'.decode())
         out = "".join(line.split())
-        out = out.replace('/', "").replace('.',"").replace('\\', "").replace('?', "").replace('>', "").replace('<', "").replace(' ', "")
+        out = out.replace('/', "").replace('.', "").replace('\\', "").replace(
+            '?', "").replace('>', "").replace('<', "").replace(' ', "").replace('-', "")
         return out
