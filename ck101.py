@@ -227,5 +227,5 @@ def list_page(url):
 
 # 抓取頁數
 ___url = "https://ck101.com/forum.php?mod=forumdisplay&fid=3581&page={}"
-for i in range(1, 15):
+for i in range(1, 100):
     list_page(___url.format(i))

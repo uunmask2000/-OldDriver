@@ -95,7 +95,10 @@ def singe_page(url, _text):
     file_s = []
     ###
     soup = get_soup(url)
-    div_ = soup.find('div', {'class': 't_fsz'}).find_all('img')
+    try:
+        div_ = soup.find('div', {'class': 't_fsz'}).find_all('img') 
+    except:
+        return True    
     # print(div_)
     for target_list in div_:
         file_ = target_list.get('file')
@@ -228,7 +231,7 @@ def list_page(url):
 # 抓取頁數
 ___url = 'https://www.jkforum.net/forum-520-{}.html'
 #list_page(___url)
-for i in range(1, 15):
+for i in range(1, 100):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))

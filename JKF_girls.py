@@ -236,7 +236,7 @@ def list_page(url):
 # 抓取頁數
 # list_page(___url)
 ___url = "https://www.jkforum.net/forum-1112-{}.html"
-for i in range(1, 15):
+for i in range(1, 100):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
