@@ -94,17 +94,26 @@ def singe_page(url, _text):
     file_s = []
     ###
     soup = get_soup(url)
-    div_ = soup.find('div', {'id': 'lightboxwrap'}).find_all('img')
+    # div_ = soup.find('div', {'class': 't_fsz'}).find_all('img')
     # print(div_)
-    for target_list in div_:
-        file_ = target_list.get('file')
-        # print(file_)
-        if file_ == None:
-            pass
-        else:
-            file_s.append(file_)
+    # for target_list in div_:
+    #     file_ = target_list.get('file')
+    #     # print(file_)
+    #     if file_ == None:
+    #         pass
+    #     else:
+    #         file_s.append(file_)
+    img_ = soup.find_all('img', {'class': 'zoom'})
+    for target_list in img_:
+            file_ = target_list.get('file')
+            # print(file_)
+            if file_ == None:
+                pass
+            else:
+                file_s.append(file_)
+
     # 圖片
-    # print(file_s)
+    print(file_s)
     temple_['img'] = file_s
     temple_['img_rows'] = len(file_s)
     ##
