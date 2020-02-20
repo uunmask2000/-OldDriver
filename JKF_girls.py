@@ -174,26 +174,33 @@ def get_to_image(_prex,  img,  count):
         cr_dir(path) 
         true_local_path = [] 
 
-        if int(len(img)) == 0:
+        # ------------------------------------------------------
+        _s1 = len(os.listdir(path))
+        _S1 = len(img)
+        # print(img)
+        # print(_s1)
+        # print(_S1)
+
+        # 刪除資料夾。
+        if _S1 == 0:
             try:
                 shutil.rmtree(path)
             except OSError as e:
                 print(e)
-            else:
-                print("The directory is deleted successfully")
             return []
 
-        if len(os.listdir(path)) == 0:
-            if len(os.listdir(path)) == int(len(img)):
-                return []
-            else:
+        # 下載圖片
+        if _s1 == _S1:
+            # 空資料夾刪除
+            if _s1 == 0:
                 try:
                     shutil.rmtree(path)
                 except OSError as e:
                     print(e)
-                return []   
+            return []
         else:
             print('下載圖片')
+        # ------------------------------------------------------
         
         row = 0
         for url_img in img:
