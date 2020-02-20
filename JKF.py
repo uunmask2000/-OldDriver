@@ -208,7 +208,11 @@ def get_to_image(_prex,  img,  count):
     for url_img in img:
         ##
         row += 1
-        html = requests.get(url_img)
+        try:
+            html = requests.get(url_img)
+        except expression as identifier:
+            return true_local_path
+        
         img_name = path + str(row) + '.png'
         ####
         true_local_path.append(img_name)

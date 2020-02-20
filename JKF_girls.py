@@ -96,7 +96,11 @@ def singe_page(url, _text):
     file_s = []
     ###
     soup = get_soup(url)
-    div_ = soup.find('div', {'class': 't_fsz'}).find_all('img')
+    try:
+        div_ = soup.find('div', {'class': 't_fsz'}).find_all('img')
+    except expression as identifier:
+        return False
+    
     # print(div_)
     for target_list in div_:
         file_ = target_list.get('file')
@@ -158,8 +162,13 @@ def get_to_json(content, _prex):
     # print(_prex)
     # print(content)
     # Writing JSON data
-    with open(filename, 'w') as f:
-        json.dump(content, f)
+    try:
+        with open(filename, 'w') as f:
+            json.dump(content, f)
+    except:
+        pass
+    # with open(filename, 'w') as f:
+    #     json.dump(content, f)
 
     return True
 
