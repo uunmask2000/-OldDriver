@@ -177,8 +177,11 @@ def get_to_image(_prex,  img,  count):
     #################################
 
     # ------------------------------------------------------
-    _s1 = len(os.listdir(path))
-    _S1 = len(img)
+    try:
+        _s1 = len(os.listdir(path))
+        _S1 = len(img)
+    except:
+        return true_local_path
     # print(img)
     # print(_s1)
     # print(_S1)
