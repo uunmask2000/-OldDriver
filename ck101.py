@@ -60,7 +60,10 @@ def cr_dir(FILE_PATH):
         pass
     else:
         # 只能创建单级目录，用这个命令创建级联的会报OSError错误         print 'mkdir ok
-        os.mkdir(FILE_PATH)
+        try:
+            os.mkdir(FILE_PATH)
+        except:
+            pass       
     return True
 
 
@@ -112,8 +115,7 @@ def singe_page(url, _text):
             else:
                 file_s.append(file_)
 
-    # 圖片
-    print(file_s)
+    # 圖片 
     temple_['img'] = file_s
     temple_['img_rows'] = len(file_s)
     ##

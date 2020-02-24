@@ -210,7 +210,7 @@ def get_to_image(_prex,  img,  count):
         row += 1
         try:
             html = requests.get(url_img)
-        except expression as identifier:
+        except:
             return true_local_path
         
         img_name = path + str(row) + '.png'
