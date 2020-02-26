@@ -222,17 +222,21 @@ def get_to_image(_prex,  img,  count):
     for url_img in img:
         ##
         row += 1
-        html = requests.get(url_img)
-        img_name = path + str(row) + '.png'
-        ####
-        true_local_path.append(img_name)
-        # pass
-        with open(img_name, 'wb') as file:  # 以byte的形式將圖片數據寫入
-            file.write(html.content)
-            file.flush()
-        file.close()  # close file
-        print('第 %d 張' % (row))
-        time.sleep(1)
+        try:
+            html = requests.get(url_img)
+            img_name = path + str(row) + '.png'
+            ####
+            true_local_path.append(img_name)
+            # pass
+            with open(img_name, 'wb') as file:  # 以byte的形式將圖片數據寫入
+                file.write(html.content)
+                file.flush()
+            file.close()  # close file
+            print('第 %d 張' % (row))
+            time.sleep(1)
+        except :
+            return true_local_path
+       
 
     return true_local_path
 
