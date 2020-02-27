@@ -176,7 +176,7 @@ def get_to_json(content, _prex):
 def get_to_image(_prex,  img,  count):
     
     try:
-        path = './images/JKF_girls/'
+        path = './images/JKF_H/'
         cr_dir(path)
         # 過濾
         path = path + str(_prex) + '/'
