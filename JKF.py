@@ -96,9 +96,9 @@ def singe_page(url, _text):
     ###
     soup = get_soup(url)
     try:
-        div_ = soup.find('div', {'class': 't_fsz'}).find_all('img') 
+        div_ = soup.find('div', {'class': 't_fsz'}).find_all('img')
     except:
-        return True    
+        return True
     # print(div_)
     for target_list in div_:
         file_ = target_list.get('file')
@@ -140,7 +140,8 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['serchcode'],  temple_['img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['serchcode'],  temple_[
+                                  'img'],  temple_['img_rows'])
 
     # JSON path
     get_to_json(temple_,  temple_['serchcode'])
@@ -215,7 +216,7 @@ def get_to_image(_prex,  img,  count):
             html = requests.get(url_img)
         except:
             return true_local_path
-        
+
         img_name = path + str(row) + '.png'
         ####
         true_local_path.append(img_name)
@@ -245,8 +246,8 @@ def list_page(url):
 
 
 # 抓取頁數
-___url = 'https://www.jkforum.net/forum-520-{}.html'
-#list_page(___url)
+___url = 'https://www.jkforum.net/forum-736-{}.html'
+# list_page(___url)
 for i in range(1, 10):
     url = ___url.format(i)
     print(url)
