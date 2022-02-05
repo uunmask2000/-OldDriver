@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-05 11:20:39
-LastEditTime : 2022-02-05 15:09:02
+LastEditTime : 2022-02-05 16:38:45
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF_girls.py
@@ -31,6 +31,15 @@ from bs4 import BeautifulSoup
 ###
 CustomEncryption = CustomEncryption.CustomEncryption()
 
+
+def check_json(_prex):
+    ###
+    path = './json/'
+    cr_dir(path)
+    path = './json/JKF/'
+    cr_dir(path)
+    filename = path + str(_prex) + '.json'
+    return os.path.isdir(filename)
 
 def inint():
 
@@ -103,7 +112,9 @@ def singe_page(url, _text):
     path_name = 'JKF'
     _text = url.replace('https://www.jkforum.net/thread-',
                         '').replace('.html', '')
-
+    if(check_json(_text)):
+            print('url ' + url)
+            return True
     file_s = []
     ###
     soup = get_soup(url)

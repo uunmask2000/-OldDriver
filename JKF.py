@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-05 11:20:39
-LastEditTime : 2022-02-05 15:06:23
+LastEditTime : 2022-02-05 16:37:22
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF.py
@@ -29,6 +29,16 @@ from bs4 import BeautifulSoup
 
 ###
 CustomEncryption = CustomEncryption.CustomEncryption()
+
+
+def check_json(_prex):
+    ###
+    path = './json/'
+    cr_dir(path)
+    path = './json/JKF/'
+    cr_dir(path)
+    filename = path + str(_prex) + '.json'
+    return os.path.isdir(filename)
 
 
 def inint():
@@ -99,7 +109,13 @@ def singe_page(url, _text):
 
     ##
     temple_ = inint()
-    _text  =  url.replace('https://www.jkforum.net/thread-', '').replace('.html', '')
+    _text = url.replace('https://www.jkforum.net/thread-',
+                        '').replace('.html', '')
+
+    if(check_json(_text)):
+        print('url ' + url)
+        return True
+
     file_s = []
     ###
     soup = get_soup(url)
@@ -148,7 +164,8 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['serchcode'],  temple_['img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(temple_['serchcode'],  temple_[
+                                  'img'],  temple_['img_rows'])
 
     # JSON path
     get_to_json(temple_,  temple_['serchcode'])
@@ -177,7 +194,7 @@ def get_to_json(content, _prex):
 
 
 def get_to_image(_prex,  img,  count):
-     ###
+    ###
     path = './images/'
     cr_dir(path)
     path = './images/JKF/'
@@ -258,7 +275,7 @@ def list_page(url):
 
 # 抓取頁數
 ___url = 'https://www.jkforum.net/forum-520-{}.html'
-#list_page(___url)
+# list_page(___url)
 for i in range(1, 100):
     url = ___url.format(i)
     print(url)
