@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-05 11:20:39
-LastEditTime : 2022-02-05 15:05:22
+LastEditTime : 2022-02-05 15:06:23
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF.py
@@ -257,14 +257,14 @@ def list_page(url):
 
 
 # 抓取頁數
-# ___url = 'https://www.jkforum.net/forum-520-{}.html'
-# #list_page(___url)
-# for i in range(1, 100):
-#     url = ___url.format(i)
-#     print(url)
-#     list_page(___url.format(i))
+___url = 'https://www.jkforum.net/forum-520-{}.html'
+#list_page(___url)
+for i in range(1, 100):
+    url = ___url.format(i)
+    print(url)
+    list_page(___url.format(i))
 
 
-_url = 'https://www.jkforum.net/thread-14523814-1-1.html'
-title = '爆乳正妹dora妍希深美壕溝比海景壯麗，火辣身材讓人好驚喜，事業線超深長讓人秒硬 '
-singe_page(_url, title)
+# _url = 'https://www.jkforum.net/thread-14523814-1-1.html'
+# title = '爆乳正妹dora妍希深美壕溝比海景壯麗，火辣身材讓人好驚喜，事業線超深長讓人秒硬 '
+# singe_page(_url, title)
