@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-05 11:20:39
-LastEditTime : 2022-02-05 16:38:45
+LastEditTime : 2022-02-05 16:43:09
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF_girls.py
@@ -33,13 +33,16 @@ CustomEncryption = CustomEncryption.CustomEncryption()
 
 
 def check_json(_prex):
+    print(_prex)
+    print(_prex)
     ###
     path = './json/'
     cr_dir(path)
-    path = './json/JKF/'
+    path = './json/JKF_girls/'
     cr_dir(path)
     filename = path + str(_prex) + '.json'
     return os.path.isdir(filename)
+
 
 def inint():
 
@@ -112,9 +115,10 @@ def singe_page(url, _text):
     path_name = 'JKF'
     _text = url.replace('https://www.jkforum.net/thread-',
                         '').replace('.html', '')
+    print(_text)
     if(check_json(_text)):
-            print('url ' + url)
-            return True
+        print('url ' + url)
+        return True
     file_s = []
     ###
     soup = get_soup(url)
@@ -138,7 +142,8 @@ def singe_page(url, _text):
     ##
     temple_['host'] = url
     temple_['h1'] = _text
-    temple_['title_main'] = CustomEncryption.removePunctuation(soup.find("meta",  property="og:title")['content'])
+    temple_['title_main'] = CustomEncryption.removePunctuation(
+        soup.find("meta",  property="og:title")['content'])
     temple_['title'] = ','.join(str(i) for i in re.findall(
         u"[\u4e00-\u9fa5]+", soup.title.text))
     ####
@@ -165,10 +170,10 @@ def singe_page(url, _text):
     # print(temple_)
 
     # IMG path
-    temple_['img'] = get_to_image(temple_['title_main'],  temple_['img'],  temple_['img_rows'])
+    temple_['img'] = get_to_image(_text,  temple_['img'],  temple_['img_rows'])
 
     # JSON path
-    get_to_json(temple_,  temple_['title_main'])
+    get_to_json(temple_,   _text)
 
     return True
 
@@ -278,4 +283,3 @@ for i in range(1, 100):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
-
