@@ -1,3 +1,12 @@
+'''
+Arthur       : kk
+Date         : 2022-02-05 11:20:39
+LastEditTime : 2022-02-05 15:09:02
+LastEditors  : your name
+Description  : 自動生成 [嚴格紀律 Description]
+FilePath     : \-OldDriver\JKF_girls.py
+嚴格紀律
+'''
 
 import requests
 import re
@@ -92,6 +101,8 @@ def singe_page(url, _text):
     ##
     temple_ = inint()
     path_name = 'JKF'
+    _text = url.replace('https://www.jkforum.net/thread-',
+                        '').replace('.html', '')
 
     file_s = []
     ###
@@ -100,7 +111,7 @@ def singe_page(url, _text):
         div_ = soup.find('div', {'class': 't_fsz'}).find_all('img')
     except expression as identifier:
         return False
-    
+
     # print(div_)
     for target_list in div_:
         file_ = target_list.get('file')
@@ -174,14 +185,14 @@ def get_to_json(content, _prex):
 
 
 def get_to_image(_prex,  img,  count):
-    
+
     try:
         path = './images/JKF_girls/'
         cr_dir(path)
         # 過濾
         path = path + str(_prex) + '/'
-        cr_dir(path) 
-        true_local_path = [] 
+        cr_dir(path)
+        true_local_path = []
 
         # ------------------------------------------------------
         _s1 = len(os.listdir(path))
@@ -210,7 +221,7 @@ def get_to_image(_prex,  img,  count):
         else:
             print('下載圖片')
         # ------------------------------------------------------
-        
+
         row = 0
         for url_img in img:
             ##
@@ -247,7 +258,7 @@ def list_page(url):
             _url = 'https://www.jkforum.net/' + url
             singe_page(_url, title)
     return True
- 
+
 
 # 抓取頁數
 # list_page(___url)
@@ -256,4 +267,4 @@ for i in range(1, 100):
     url = ___url.format(i)
     print(url)
     list_page(___url.format(i))
- 
+
