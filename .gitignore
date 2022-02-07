@@ -5,3 +5,4 @@ run.bat
 run_JKF.bat
 json/*
 .bat*
+*.zip
