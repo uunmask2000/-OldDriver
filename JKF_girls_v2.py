@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-07 14:41:27
-LastEditTime : 2022-02-07 15:12:55
+LastEditTime : 2022-02-07 15:52:26
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF_girls_v2.py
@@ -33,6 +33,7 @@ CustomEncryption = CustomEncryption.CustomEncryption()
 JkfClass = JkfClass.JkfClass(123456, 'jkf_girls_api')
 
 global number
+
 
 def inint():
 
@@ -152,17 +153,19 @@ def singe_page(url, _text):
     return True
 
 
-def list_page(url):
+def list_page(url, page):
     soup = JkfClass.get_soup(url)
     # print(soup)
     aa = soup.find_all('a', {'class': "z"})
-    number = 0
+    number = 40 * (page - 1)
+    print(number)
+
     for _a in aa:
         url = _a.get('href')
         title = CustomEncryption.removePunctuation(_a.get('title'))
         if url.find("typeid") == -1:
-            print(url, ' : ', title)
             number += 1
+            print(url, ' : ', title, ' : ', number)
             _url = 'https://www.jkforum.net/' + url
             singe_page(_url, number)
     return True
@@ -170,7 +173,8 @@ def list_page(url):
 
 # 抓取頁數
 ___url = "https://www.jkforum.net/forum-1112-{}.html"
-for i in range(1, 20):
+
+for i in range(1, 4):
     url = ___url.format(i)
     print(url)
-    list_page(___url.format(i))
+    list_page(___url.format(i), i)
