@@ -1,10 +1,10 @@
 '''
 Arthur       : kk
 Date         : 2022-02-05 11:20:39
-LastEditTime : 2022-02-05 16:37:22
+LastEditTime : 2022-02-05 18:30:14
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
-FilePath     : \-OldDriver\JKF.py
+FilePath     : \-OldDriver\'+_pjg+'.py
 嚴格紀律
 '''
 
@@ -30,12 +30,13 @@ from bs4 import BeautifulSoup
 ###
 CustomEncryption = CustomEncryption.CustomEncryption()
 
+_pjg = 'JKF'
 
 def check_json(_prex):
     ###
     path = './json/'
     cr_dir(path)
-    path = './json/JKF/'
+    path = './json/'+_pjg+'/'
     cr_dir(path)
     filename = path + str(_prex) + '.json'
     return os.path.isdir(filename)
@@ -99,7 +100,7 @@ def get_soup(url):
 
 
 def singe_page(url, _text):
-    path_name = 'JKF'
+    path_name = ''+_pjg+''
     ###
     # title
     # <meta property="article:section" content="正妹">
@@ -109,7 +110,7 @@ def singe_page(url, _text):
 
     ##
     temple_ = inint()
-    _text = url.replace('https://www.jkforum.net/thread-',
+    _text = url.replace('https://www.'+_pjg+'orum.net/thread-',
                         '').replace('.html', '')
 
     if(check_json(_text)):
@@ -178,7 +179,7 @@ def get_to_json(content, _prex):
     ###
     path = './json/'
     cr_dir(path)
-    path = './json/JKF/'
+    path = './json/'+_pjg+'/'
     cr_dir(path)
 
     ###
@@ -197,7 +198,7 @@ def get_to_image(_prex,  img,  count):
     ###
     path = './images/'
     cr_dir(path)
-    path = './images/JKF/'
+    path = './images/'+_pjg+'/'
     cr_dir(path)
     path = path + _prex + '/'
     cr_dir(path)
@@ -268,13 +269,13 @@ def list_page(url):
             '/', '_').replace(':', '_').replace('，', '_')
         if url.find("typeid") == -1:
             print(url, ' : ', title)
-            _url = 'https://www.jkforum.net/' + url
+            _url = 'https://www.'+_pjg+'orum.net/' + url
             singe_page(_url, title)
     return True
 
 
 # 抓取頁數
-___url = 'https://www.jkforum.net/forum-520-{}.html'
+___url = 'https://www.'+_pjg+'orum.net/forum-520-{}.html'
 # list_page(___url)
 for i in range(1, 100):
     url = ___url.format(i)
@@ -282,6 +283,6 @@ for i in range(1, 100):
     list_page(___url.format(i))
 
 
-# _url = 'https://www.jkforum.net/thread-14523814-1-1.html'
+# _url = 'https://www.'+_pjg+'orum.net/thread-14523814-1-1.html'
 # title = '爆乳正妹dora妍希深美壕溝比海景壯麗，火辣身材讓人好驚喜，事業線超深長讓人秒硬 '
 # singe_page(_url, title)
