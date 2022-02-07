@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-07 14:41:27
-LastEditTime : 2022-02-07 15:52:26
+LastEditTime : 2022-02-07 16:06:02
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF_girls_v2.py
@@ -83,9 +83,12 @@ def singe_page(url, _text):
     # _text = url.replace('https://www.jkforum.net/thread-',
     #                     '').replace('.html', '')
     print(_text)
-    if(JkfClass.check_json(_text)):
+    _type = JkfClass.check_json(_text)
+    if(_type):
         print('url ' + url)
         return True
+    # print(_type)
+    # print(_text)
     file_s = []
     ###
     soup = JkfClass.get_soup(url)

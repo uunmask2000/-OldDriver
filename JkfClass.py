@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-07 14:41:55
-LastEditTime : 2022-02-07 15:10:27
+LastEditTime : 2022-02-07 16:02:53
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\jkfClass.py
@@ -52,14 +52,19 @@ class JkfClass:
             os.mkdir(FILE_PATH)
         return True
 
-    def check_json(self, _prex):
+    def check_json(self, _name):
         print(self.path)
         path = './json/'
         self.cr_dir(path)
         path = './json/'+self.path+'/'
         self.cr_dir(path)
-        filename = path + str(_prex) + '.json'
-        return os.path.isdir(filename)
+        filename = path + str(_name) + '.json'
+        realpath = os.path.normpath(filename)
+        print(realpath)
+        type = os.path.exists(realpath)
+        print(filename)
+        print(type)
+        return type
 
     def get_soup(self, url):
         headers = {
