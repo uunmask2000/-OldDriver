@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-07 14:41:27
-LastEditTime : 2022-02-07 15:06:23
+LastEditTime : 2022-02-07 15:08:51
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF_girls_v2.py
@@ -134,14 +134,19 @@ def singe_page(url, _text):
         attrs={"name": "description"})['content']
     # print(temple_)
 
-    if len(temple_['img']) > 10:
-        # IMG path
-        temple_['img'] = JkfClass.get_to_image(
-            _text,  temple_['img'],  temple_['img_rows'])
-        # JSON path
-        JkfClass.get_to_json(temple_,   _text)
-    else:
-        print('少於十張')
+    # IMG path
+    temple_['img'] = JkfClass.get_to_image(
+        _text,  temple_['img'],  temple_['img_rows'])
+    # JSON path
+    JkfClass.get_to_json(temple_,   _text)
+    # if len(temple_['img']) > 10:
+    #     # IMG path
+    #     temple_['img'] = JkfClass.get_to_image(
+    #         _text,  temple_['img'],  temple_['img_rows'])
+    #     # JSON path
+    #     JkfClass.get_to_json(temple_,   _text)
+    # else:
+    #     print('少於十張')
 
     return True
 
