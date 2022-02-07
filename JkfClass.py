@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-07 14:41:55
-LastEditTime : 2022-02-07 15:04:56
+LastEditTime : 2022-02-07 15:10:27
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\jkfClass.py
@@ -135,20 +135,17 @@ class JkfClass:
             for url_img in img:
                 ##
                 row += 1
-                if row > max:
-                    return true_local_path
-                else:
-                    html = requests.get(url_img)
-                    img_name = path + str(row) + '.png'
-                    ####
-                    true_local_path.append(img_name)
-                    # pass
-                    with open(img_name, 'wb') as file:  # 以byte的形式將圖片數據寫入
-                        file.write(html.content)
-                        file.flush()
-                    file.close()  # close file
-                    print('第 %d 張' % (row))
-                    time.sleep(1)
+                html = requests.get(url_img)
+                img_name = path + str(row) + '.png'
+                ####
+                true_local_path.append(img_name)
+                # pass
+                with open(img_name, 'wb') as file:  # 以byte的形式將圖片數據寫入
+                    file.write(html.content)
+                    file.flush()
+                file.close()  # close file
+                print('第 %d 張' % (row))
+                time.sleep(1)
         except:
             true_local_path = ""
         ###
