@@ -1,7 +1,7 @@
 '''
 Arthur       : kk
 Date         : 2022-02-07 14:41:27
-LastEditTime : 2022-02-07 15:08:51
+LastEditTime : 2022-02-07 15:12:55
 LastEditors  : your name
 Description  : 自動生成 [嚴格紀律 Description]
 FilePath     : \-OldDriver\JKF_girls_v2.py
@@ -32,6 +32,7 @@ from bs4 import BeautifulSoup
 CustomEncryption = CustomEncryption.CustomEncryption()
 JkfClass = JkfClass.JkfClass(123456, 'jkf_girls_api')
 
+global number
 
 def inint():
 
